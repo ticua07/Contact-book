@@ -9,6 +9,7 @@ def add_contact():
     c.execute(f"INSERT INTO contacts VALUES (Null,'{nombre}','{telefono}','{ubicacion}')")
 
 def delete_contact():
+    clear = os.system("cls") if os.name == "nt" else os.system("clear")
     nombre = input("Buscar por nombre> ")
     for i in c.execute(f"SELECT * FROM contacts WHERE nombre = '{nombre}'"):
         print(type(i))
@@ -24,6 +25,7 @@ def delete_contact():
             exit()
     
 def search_contact():
+    clear = os.system("cls") if os.name == "nt" else os.system("clear")
     nombre = input("Nombre> ")
     data = []
     for i in c.execute(f"SELECT nombre, telefono, ubicacion, id FROM contacts WHERE nombre = '{nombre}'"):
@@ -34,6 +36,7 @@ def search_contact():
     print(*data, sep=" | ")
 
 def show_all_contacts():
+    clear = os.system("cls") if os.name == "nt" else os.system("clear")
     for i in c.execute("SELECT * FROM contacts"):
         print(*i, sep=" | ")
         print("----------------------------------------------------------")
